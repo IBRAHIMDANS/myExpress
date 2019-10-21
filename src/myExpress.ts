@@ -12,7 +12,6 @@ class myExpress {
             const searchRoute = this.routes.find(route =>
                 (route.path === req.url && (route.method === req.method || route.method === Method.ALL)
                 ));
-            console.log(searchRoute);
             if (searchRoute) {
                 searchRoute.cb(req, res);
             } else {
