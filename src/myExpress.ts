@@ -2,7 +2,7 @@ import { createServer, IncomingMessage, RequestListener, ServerResponse } from '
 import { Route } from './route.interface';
 import Method from './Method';
 
-export default class myExpress {
+class myExpress {
     private server: any;
     private routes: Route [];
 
@@ -56,3 +56,5 @@ export default class myExpress {
     }
 
 }
+
+export  const express = new myExpress;

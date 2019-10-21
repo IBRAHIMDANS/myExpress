@@ -1,9 +1,11 @@
-import myExpress from './myExpress';
+import { express } from './myExpress';
 import { IncomingMessage, ServerResponse } from 'http';
 
-const app = new myExpress();
-app.listen(8001, () => {
-    console.log('listen to 0.0.0.0:8001')
+const app =  express;
+const port = process.env.PORT || 8001;
+
+app.listen(port, () => {
+    console.log(`listen to 0.0.0.0:${port}`);
 });
 app.get('/', (req: IncomingMessage, res: ServerResponse) => {
     res.writeHead(200);
