@@ -1,4 +1,5 @@
 import { createServer, IncomingMessage, RequestListener, ServerResponse } from 'http';
+import { readFileSync } from 'fs';
 import { Route } from './route.interface';
 import Method from './Method';
 
@@ -9,7 +10,7 @@ class myExpress {
     constructor() {
         this.routes = [];
         this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
-            const searchRoute = this.routes.find(route =>
+            const searchRoute: any = this.routes.find(route =>
                 (route.path === req.url && (route.method === req.method || route.method === Method.ALL)
                 ));
             if (searchRoute) {
@@ -46,8 +47,11 @@ class myExpress {
     public all(path: string, cb: RequestListener): void {
         this.getterRoute(path, cb, Method.ALL);
     }
-    public render(path: string, cb: RequestListener): void {
-       console.log('render')
+
+    public render(path: string, params?: object, cb?: Function): void {
+        const file = readFileSync(`./templates/${path}`, 'utf8');
+        console.log(file);
+
     }
 
     public listen(port: number | string = 8001, cb: Function): void {

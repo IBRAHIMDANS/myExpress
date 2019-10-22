@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_1 = require("http");
+const fs_1 = require("fs");
 const route_interface_1 = require("./route.interface");
 const Method_1 = require("./Method");
 class myExpress {
@@ -8,7 +9,6 @@ class myExpress {
         this.routes = [];
         this.server = http_1.createServer((req, res) => {
             const searchRoute = this.routes.find(route => (route.path === req.url && (route.method === req.method || route.method === Method_1.default.ALL)));
-            console.log(searchRoute);
             if (searchRoute) {
                 searchRoute.cb(req, res);
             }
@@ -38,8 +38,9 @@ class myExpress {
     all(path, cb) {
         this.getterRoute(path, cb, Method_1.default.ALL);
     }
-    render(path, cb) {
-        console.log('render');
+    render(path, params, cb) {
+        const file = fs_1.readFileSync(`./templates/${path}`, 'utf8');
+        console.log(file);
     }
     listen(port = 8001, cb) {
         this.server.listen(port, cb);
