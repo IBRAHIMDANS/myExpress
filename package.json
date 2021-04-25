@@ -8,12 +8,12 @@
   },
   "devDependencies": {
     "@types/lodash": "4.14.168",
-    "@types/mustache": "^0.8.32",
+    "@types/mustache": "0.8.32",
     "@types/node": "12.20.10",
     "eslint": "6.8.0",
-    "nodemon": "^1.19.3",
-    "tsc": "^1.20150623.0",
-    "typescript": "^3.6.4"
+    "nodemon": "1.19.3",
+    "tsc": "1.20150623.0",
+    "typescript": "3.6.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
